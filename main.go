@@ -3,25 +3,26 @@ package main
 import "fmt"
 
 func main() {
-	// strings
-	var nameOne string = "mario"
-	nameTwo := "luigi"
+	age := 35
+	name := "Terry"
+	// Print
+	fmt.Print("hello, ")
+	fmt.Print("world! \n")
+	fmt.Print("new line \n")
 
-	fmt.Println(nameOne, nameTwo)
+	fmt.Println("hellow world! again")
+	fmt.Println("goodbye")
 
-	// ints
-	var ageOne int = 20
-	ageTwo := 30
-	ageThree := 40
+	fmt.Println("my age is", age, "and my name is", name)
 
-	fmt.Println(ageOne, ageTwo, ageThree)
-
-	// bits & memory
-	// var numbOne int8 = 25
-	// var numbTwo int8 = -128
-	// var numbThree uint16 = 256
-
-	var scoreOne float32 = 25.98
-	var scoreTwo float62 = 87581945791083475901875.7
-	scoreThree := 25.6
+	// Printf
+	fmt.Printf("my age is %v and my name is %v\n", age, name)
+	fmt.Printf("my age is %q and my name is %q\n", age, name)
+	fmt.Printf("age is of type %T\n", age)
+	fmt.Printf("you scored %0.2f points!\n", 255.5555)
+  
+  // Sprintf (save formatted strings)
+	var str = fmt.Sprintf("my age is %v and my name is %v\n", age, name)
+  fmt.Println("the saved string is:", str)
+  // more example at golang.org/pkg/fmt
 }

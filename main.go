@@ -3,26 +3,30 @@ package main
 import "fmt"
 
 func main() {
-	age := 35
-	name := "Terry"
-	// Print
-	fmt.Print("hello, ")
-	fmt.Print("world! \n")
-	fmt.Print("new line \n")
+	// var ages [3]int = [3]int{20, 25, 30}
+	ages := [3]int{20, 25, 30}
 
-	fmt.Println("hellow world! again")
-	fmt.Println("goodbye")
+	names := [4]string{
+		"yoshi", "mario", "peach", "bowser",
+	}
+	names[1] = "luigi"
 
-	fmt.Println("my age is", age, "and my name is", name)
+	fmt.Println(ages, len(ages))
+	fmt.Println(names, len(names))
 
-	// Printf
-	fmt.Printf("my age is %v and my name is %v\n", age, name)
-	fmt.Printf("my age is %q and my name is %q\n", age, name)
-	fmt.Printf("age is of type %T\n", age)
-	fmt.Printf("you scored %0.2f points!\n", 255.5555)
-  
-  // Sprintf (save formatted strings)
-	var str = fmt.Sprintf("my age is %v and my name is %v\n", age, name)
-  fmt.Println("the saved string is:", str)
-  // more example at golang.org/pkg/fmt
+	// slices (use array under the hodd)
+	scores := []int{100, 50, 60}
+	scores[2] = 25
+	scores = append(scores, 85)
+	fmt.Println(scores, len(scores))
+
+  // slice ranges
+  rangeOne := names[1:3]
+  rangeTwo := names[2:]
+  rangeThree := names [:3]
+  fmt.Println(rangeOne, rangeTwo, rangeThree)
+
+  rangeOne = append(rangeOne, "koopa")
+  fmt.Println(rangeOne[len(rangeOne)-1])
+
 }

@@ -1,32 +1,29 @@
 package main
 
-import (
-	"fmt"
-	"sort"
-)
+import "fmt"
 
 func main() {
-	greeting := "hello there friends!"
+	// x := 0
+	// for x < 5 {
+	//   fmt.Println("value of x is", x)
+	//   x++
+	// }
 
-	// fmt.Println(strings.Contains(greeting, "hello"))
-	// fmt.Println(strings.ReplaceAll(greeting, "hello", "hi"))
-	// fmt.Println(strings.ToUpper(greeting))
-	// fmt.Println(strings.Index(greeting, "ll"))
-	// fmt.Println(strings.Split(greeting, " "))
+  names := []string{"mario", "luigi", "yoshi", "peach"}
 
-	// the original string is unchanged
-	fmt.Println("original string value", greeting)
+	for i := 0; i < len(names); i++ {
+		fmt.Println(names[i])
+	}
 
-	ages := []int{45, 20, 35, 70, 60, 50, 25}
-	sort.Ints(ages)
-	fmt.Println(ages)
-
-	index := sort.SearchInts(ages, 30)
-	fmt.Println(index)
-
-  names := []string{"yoshi", "mario", "peach", "bowser", "luigi"}
-  sort.Strings(names)
+  for index, value := range names {
+    fmt.Printf("the value at index %v is %v\n", index, value)
+  }
+  for _, value := range names {
+    fmt.Printf("the value is %v\n", value)
+  }
+  for index, value := range names {
+    fmt.Printf("the value is %v\n", value)
+    names[index] = "delete_name_" + value 
+  }
   fmt.Println(names)
-
-  fmt.Println(sort.SearchStrings(names, "bowser"))
 }

@@ -1,38 +1,33 @@
 package main
 
-import (
-	"fmt"
-	"math"
-)
-
-func sayGreeting(n string) {
-	fmt.Printf("Good moring %v\n", n)
-}
-
-func sayBye(n string) {
-	fmt.Printf("Bye %v\n", n)
-}
-
-func cycleName(n []string, f func(string)) {
-	for _, value := range n {
-		f(value)
-	}
-}
-
-func circleArea(r float64) float64 {
-	return math.Pi * r * r
-}
+import "fmt"
 
 func main() {
-	// sayGreeting("mario")
-	// sayGreeting("luigi")
-	// sayBye("mario")
+	age := 25
 
-	cycleName([]string{"cloud", "tifa", "barret"}, sayGreeting)
-	cycleName([]string{"cloud", "tifa", "barret"}, sayBye)
+	fmt.Println(age <= 50)
+	fmt.Println(age >= 50)
+	fmt.Println(age == 45)
+	fmt.Println(age != 50)
 
-	a1 := circleArea(10.5)
-	a2 := circleArea(15)
+	if age < 30 {
+		fmt.Println("age is less than 30")
+	} else if age < 40 {
+		fmt.Println("age is less than 40")
+	} else {
+		fmt.Println("age is not less than 40")
+	}
+	names := []string{"mario", "luigi", "yoshi", "peach", "bowser"}
+	for index, value := range names {
+		if index == 1 {
+			fmt.Println("continuing at pos", index)
+			continue
+		}
+		if index > 2 {
+			fmt.Println("breaking at ps", index)
+			break
+		}
 
-	fmt.Printf("circle 1 is %0.3f and circle 2 is %0.3f", a1, a2)
+		fmt.Printf("the value at pos %v is %v\n", index, value)
+	}
 }

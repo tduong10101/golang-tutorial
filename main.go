@@ -2,37 +2,32 @@ package main
 
 import (
 	"fmt"
-	"math"
+	"strings"
 )
 
-func sayGreeting(n string) {
-	fmt.Printf("Good moring %v\n", n)
-}
+func getInitials(n string) (string, string) {
+  s := strings.ToUpper(n)
+  names := strings.Split(s, " ")
 
-func sayBye(n string) {
-	fmt.Printf("Bye %v\n", n)
-}
+  var initials []string
+  for _, v := range names {
+    initials = append(initials, v[:1])
+  }
 
-func cycleName(n []string, f func(string)) {
-	for _, value := range n {
-		f(value)
-	}
-}
+  if len(initials) > 1 {
+    return initials[0], initials[1]
+  }
 
-func circleArea(r float64) float64 {
-	return math.Pi * r * r
+  return initials[0], "_"
 }
 
 func main() {
-	// sayGreeting("mario")
-	// sayGreeting("luigi")
-	// sayBye("mario")
+  fn1, sn1 := getInitials("tifa lockhart")
+  fmt.Println(fn1, sn1)
+  fn2, sn2 := getInitials("cloud strife")
+  fmt.Println(fn2, sn2)
+  fn3, sn3 := getInitials("Barron")
+  fmt.Println(fn3, sn3)
 
-	cycleName([]string{"cloud", "tifa", "barret"}, sayGreeting)
-	cycleName([]string{"cloud", "tifa", "barret"}, sayBye)
 
-	a1 := circleArea(10.5)
-	a2 := circleArea(15)
-
-	fmt.Printf("circle 1 is %0.3f and circle 2 is %0.3f", a1, a2)
 }

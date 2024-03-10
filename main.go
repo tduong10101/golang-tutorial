@@ -1,9 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
-  mybill := newBill("mario's Bill")
+	mybill := newBill("mario's Bill")
+  bill_str := mybill.format()
 
-  fmt.Println(mybill)
+  fmt.Println(bill_str)
 }

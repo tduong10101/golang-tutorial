@@ -1,71 +1,40 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
-	"strconv"
-	"strings"
+	"math"
 )
 
-func getInput(prompt string, r *bufio.Reader) (string, error) {
-	fmt.Print(prompt)
-	input, error := r.ReadString('\n')
-	return strings.TrimSpace(input), error
+type shape interface {
+	area() float64
+}
+type square struct {
+	length float64
+}
+type circle struct {
+	radius float64
 }
 
-func createBill() bill {
-	reader := bufio.NewReader(os.Stdin)
-	name, _ := getInput("Create a new bill name: ", reader)
-
-	b := newBill(name)
-	fmt.Println("Created the bill - ", b.name)
-
-	return b
+func (s *square) area() float64 {
+	return s.length * s.length
 }
 
-func promptOptions(b bill) {
-	reader := bufio.NewReader(os.Stdin)
+func (c *circle) area() float64 {
+	return c.radius * c.radius * math.Pi
+}
 
-	opt, _ := getInput("Chose option (a - add item, s - save bill, t - add tip): ", reader)
-	switch opt {
-	case "a":
-		name, _ := getInput("Item name: ", reader)
-		price, _ := getInput("Item price: ", reader)
-
-		p, err := strconv.ParseFloat(price, 64)
-		if err != nil {
-			fmt.Println("The price must be a number")
-			promptOptions(b)
-      break
-		}
-		b.addItem(name, p)
-
-		fmt.Println("Item added - ", name, price)
-		promptOptions(b)
-	case "t":
-		tip, _ := getInput("Enter tip amount ($): ", reader)
-		t, err := strconv.ParseFloat(tip, 64)
-		if err != nil {
-			fmt.Println("The tip must be a number")
-			promptOptions(b)
-      break
-		}
-		b.updateTip(t)
-		fmt.Println("tip added - ", tip)
-		promptOptions(b)
-	case "s":
-    b.save()
-		fmt.Println("you save the file - ", b.name)
-	default:
-		fmt.Println("that was not a valid option")
-		promptOptions(b)
-	}
+func toString(s shape) string {
+  return fmt.Sprint("area of the shape is: ", s.area())
 }
 
 func main() {
-	mybill := createBill()
-	promptOptions(mybill)
-
-	fmt.Println(mybill)
+	shapes := []shape{
+		&square{length: 10},
+		&square{length: 2},
+		&circle{radius: 2},
+		&circle{radius: 10},
+	}
+	for _, v := range shapes {
+    fmt.Println(toString(v))
+	}
 }
